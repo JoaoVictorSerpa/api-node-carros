@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="listaCarros"></ul>
+
+    <input type="text" id="nome" placeholder="nome do carro">
+    <input type="text" id="placa" placeholder="placa">
+    <input type="text" id="marca" placeholder="marca">
+
+    <button onclick="cadastrarCarro()">
+        Cadastrar Carro
+    </button>
+
+    <script>
+        async function cadastrarCarro() {
+            const name = document.getElementById('nome').value
+            const placa = document.getElementById('placa').value
+            const marca = document.getElementById('marca').value
+
+            const carro = {
+                name: name,
+                placa: placa,
+                marca: marca
+            }
+
+            let resposta = await fetch('http://localhost:3333/cars', {
+                method: 'post',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(carro)
+            })
+            listarCarros()
+
+        }
+
+
+        async function listarCarros() {
+            const listaDeCarros = document.getElementById('listaCarros');
+
+            let listaDoBack = await fetch('http://localhost:3333/cars', {
+                method: 'get'
+            })
+
+            listaDoBack = await listaDoBack.json();
+
+            for (const posicaoArray in listaDoBack) {
+                const carro = listaDoBack[posicaoArray];
+                const li = document.createElement('li');
+                li.textContent = carro.name;
+                listaDeCarros.appendChild(li);
+            }
+
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+#PARA UTILIZAR ESSES ENDPOINTS É NECESSÁRIO INSTALAR A EXTENSÃO DO VSCODE "REST CLIENT"
+###
+
+GET http://localhost:3333/cars
+
+###
+
+POST http://localhost:3333/cars
+Content-Type: application/json
+
+{
+    "name": "fox",
+    "placa": "86554",
+    "marca": "Fiat"
+}
+
+###
+
+POST http://localhost:3333/login
+Content-Type: application/json
+
+{
+    "name": "Marcos",
+    "placa": "12345"
+}
+
+
+###
+
+PUT http://localhost:3333/cars/2c73832b-76a5-480e-b462-82ebdead48a2
+Content-Type: application/json
+
+{
+    "name": "Camaro",
+    "placa": "578-dsf",
+    "marca": "Chevrolet"
+}
+
+###
+
+DELETE http://localhost:3333/cars/c972b09f-4358-469e-abf1-78ed1007bdf9
+
+###usuarios
+
+GET http://localhost:3333/users
+
+###
+
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+    "name": "Uno",
+    "senha": "86554",
+    "email": "Fiat"
+}
+
+###
+
+PUT http://localhost:3333/users/2c73832b-76a5-480e-b462-82ebdead48a2
+Content-Type: application/json
+
+{
+    "name": "Camaro",
+    "senha": "578-dsf",
+    "email": "Chevrolet"
+}
+
+###
+
+DELETE http://localhost:3333/users/c972b09f-4358-469e-abf1-78ed1007bdf9
